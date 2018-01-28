@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Get Google Analytics Data";
+}
+
+<h2>Get Google Analytics Data Based on provided input</h2>
+<p>Below are default parameter action method for fetch pagePath, pageTitle and pageView from google analytics</p>
+<p> You can modify parameter value and verify result</p>
+<blockquote>
+    string fromDate = "2017-01-01", string toDate = "2017-06-06", string dimensions = "ga:pagePath,ga:pageTitle", string metrics = "ga:pageviews", string sortBy = "-ga:pageviews", int maxResult = 20
+</blockquote>
+
+@if (!ViewBag.isError)
+{
+    foreach (var item in (IList<IList<string>>)ViewBag.AnalyticsData)
+    {
+        <li title="@item[1]"><i>Page Title:</i> <b>@item[1]</b> ,<i>Page Path:</i> <b>@item[0]</b> , <i>View Count:</i> <b>@item[2]</b> , </li>
+    }
+}
+else
+{
+    <text>@ViewBag.StatusMsg</text>
+}
+
+
